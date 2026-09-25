@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Slides to Voice — PPT to video</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <div class="wave" aria-hidden="true">
+        <svg viewBox="0 0 600 60" preserveAspectRatio="none">
+          <path id="wavePath" d="M0,30 Q15,10 30,30 T60,30 T90,30 T120,30 T150,30 T180,30 T210,30 T240,30 T270,30 T300,30 T330,30 T360,30 T390,30 T420,30 T450,30 T480,30 T510,30 T540,30 T570,30 T600,30" />
+        </svg>
+      </div>
+      <h1>Give your slides a voice.</h1>
+      <p class="sub">Upload a .pptx, pick a narrator, and get back a fully voiced video —
+      an Indian-accented narration written and spoken for every slide, timed to run long enough to actually cover the material.</p>
+    </header>
+
+    <main class="panel" id="uploadPanel">
+      <form id="convertForm">
+        <div class="dropzone" id="dropzone">
+          <input type="file" id="fileInput" name="pptx" accept=".pptx" hidden>
+          <div class="dz-inner">
+            <span class="dz-file" id="dzFile">No file selected</span>
+            <span class="dz-label">Drop a .pptx here, or <span class="dz-link">browse</span></span>
+          </div>
+        </div>
+
+        <div class="options">
+          <div class="opt-group">
+            <span class="opt-title">Narrator</span>
+            <div class="seg" data-name="gender">
+              <button type="button" class="seg-btn active" data-value="female">Female</button>
+              <button type="button" class="seg-btn" data-value="male">Male</button>
+            </div>
+          </div>
+
+          <div class="opt-group">
+            <span class="opt-title">Speaking speed</span>
+            <div class="seg" data-name="speed">
+              <button type="button" class="seg-btn active" data-value="1">1x</button>
+              <button type="button" class="seg-btn" data-value="1.5">1.5x</button>
+              <button type="button" class="seg-btn" data-value="2">2x</button>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="cta" id="submitBtn" disabled>Convert to video</button>
+      </form>
+
+      <div class="progress-block" id="progressBlock" hidden>
+        <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+        <p class="progress-msg" id="progressMsg">Starting…</p>
+      </div>
+
+      <div class="result-block" id="resultBlock" hidden>
+        <video id="previewVideo" controls></video>
+        <a id="downloadLink" class="cta secondary" download>Download video</a>
+      </div>
+
+      <p class="error-msg" id="errorMsg" hidden></p>
+    </main>
+
+    <footer class="notes">
+      <p>10 slides typically produce a video of 20 minutes or more — narration length is written to match, whichever speed you choose.</p>
+    </footer>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

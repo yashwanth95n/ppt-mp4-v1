@@ -1,0 +1,2 @@
+file 'C:\Users\yash\Desktop\ppt2video\jobs\ccd4dad68eab\output.mp4'
+file 'C:\Users\yash\Desktop\ppt2video\jobs\ccd4dad68eab\pad_clip.mp4'
